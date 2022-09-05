@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ReportGenerator.ReportGenerator">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAEAIAQAAAACAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ReportGenerator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_extrac" />
+      <Field Name="_employeeDb" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ReportGenerator.PrintListNameFirst" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>PrintListNameFirst.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ReportGenerator.EmployExtractor">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAgAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EmployExtractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReportGenerator.Employee">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReportGenerator.PrintListSalaryFirst" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>PrintListSaleryFirst.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ReportGenerator.EmployeeDB">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <AssociationLine Name="_employees" Type="ReportGenerator.Employee">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.128" Y="0.223" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEQAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>EmployeeDB.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_employees" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Interface Name="ReportGenerator.IPrintEmployees">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>IPrintEmployees.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

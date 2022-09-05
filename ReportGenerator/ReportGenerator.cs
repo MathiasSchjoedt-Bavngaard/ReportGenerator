@@ -9,81 +9,40 @@ namespace ReportGenerator
         SalaryFirst
     }
 
-    internal class ReportGenerator
+    public class ReportGenerator
     {
         private readonly EmployeeDB _employeeDb;
         private ReportOutputFormatType _currentOutputFormat;
-
-
+        private List<IPrintEmployees> _PrintFormatTypes = new List<IPrintEmployees>();
+        private EmployExtractor _extrac;
+       
         public ReportGenerator(EmployeeDB employeeDb)
         {
             if (employeeDb == null) throw new ArgumentNullException("employeeDb");
+
             _currentOutputFormat = ReportOutputFormatType.NameFirst;
             _employeeDb = employeeDb;
+
+            IPrintEmployees NewPrinter = new PrintListNameFirst();
+            _PrintFormatTypes.Add(NewPrinter);
+            _PrintFormatTypes.Add(new PrintListSalaryFirst());
+
+            _extrac = new EmployExtractor();
         }
 
-        public Employee Employee
+        public void CompileReport(string Format)
         {
-            get => default(ReportGenerator.Employee);
-            set
+           _extrac.updateListFrom(_employeeDb);
+
+            if (_extrac.EmployeesNow != null)
             {
+
+                if (_PrintFormatTypes.Find(x => x.getFormat() == Format) == null)
+                   Console.WriteLine("First not Found");
+                _PrintFormatTypes.Find(x => x.getFormat() == Format).Print(_extrac.EmployeesNow);
             }
-        }
-
-        public EmployeeDB EmployeeDB
-        {
-            get => default(ReportGenerator.EmployeeDB);
-            set
-            {
-            }
-        }
-
-        public ReportOutputFormatType ReportOutputFormatType
-        {
-            get => default(ReportGenerator.ReportOutputFormatType);
-            set
-            {
-            }
-        }
-
-        public void CompileReport()
-        {
-            var employees = new List<Employee>();
-            Employee employee;
-
-            _employeeDb.Reset();
-
-            // Get all employees
-            while ((employee = _employeeDb.GetNextEmployee()) != null)
-            {
-                employees.Add(employee);
-            }
-
-            // All employees collected - let's output them
-            switch (_currentOutputFormat)
-            {
-                case ReportOutputFormatType.NameFirst:
-                    Console.WriteLine("Name-first report");
-                    foreach (var e in employees)
-                    {
-                        Console.WriteLine("------------------");
-                        Console.WriteLine("Name: {0}", e.Name);
-                        Console.WriteLine("Salary: {0}", e.Salary);
-                        Console.WriteLine("------------------");
-                    }
-                    break;
-
-                case ReportOutputFormatType.SalaryFirst:
-                    Console.WriteLine("Salary-first report");
-                    foreach (var e in employees)
-                    {
-                        Console.WriteLine("------------------");
-                        Console.WriteLine("Salary: {0}", e.Salary);
-                        Console.WriteLine("Name: {0}", e.Name);
-                        Console.WriteLine("------------------");
-                    }
-                    break;
-            }
+            else
+            throw new ArgumentNullException("_extractfail");
         }
 
 
@@ -91,5 +50,7 @@ namespace ReportGenerator
         {
             _currentOutputFormat = format;
         }
+
+
     }
 }

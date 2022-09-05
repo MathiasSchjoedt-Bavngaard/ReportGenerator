@@ -13,14 +13,6 @@ namespace ReportGenerator
             Reset();
         }
 
-        public Employee Employee
-        {
-            get => default(ReportGenerator.Employee);
-            set
-            {
-            }
-        }
-
         public void Reset()
         {
             _currentEmployeeIndex = 0;

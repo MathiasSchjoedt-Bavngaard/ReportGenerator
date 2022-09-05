@@ -1,11 +1,11 @@
 ﻿using System;
-
+using ReportGenerator;
 namespace ReportGenerator
 {
     internal class ReportGeneratorClient
     {
 
-        private static void main()
+        private static void Main()
         {
             var db = new EmployeeDB();
 
@@ -24,7 +24,7 @@ namespace ReportGenerator
 
             // Create a salary-first report
             reportGenerator.SetOutputFormat(ReportOutputFormatType.SalaryFirst);
-            reportGenerator.CompileReport("Salery");
+            reportGenerator.CompileReport("Salary");
         }
     }
 }
